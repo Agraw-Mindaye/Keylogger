@@ -3,10 +3,8 @@
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
 #include <string>
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 
